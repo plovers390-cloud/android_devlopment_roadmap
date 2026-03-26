@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5 Din Android Roadmap — Beginner to Advanced</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@300;400;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fafaf7;
+  --dark: #111110;
+  --surface: #ffffff;
+  --border: #e5e5e0;
+  --muted: #888880;
+
+  --d1: #e8f5e9; --d1b: #2e7d32; --d1t: #1b5e20;
+  --d2: #e3f2fd; --d2b: #1565c0; --d2t: #0d47a1;
+  --d3: #fff3e0; --d3b: #e65100; --d3t: #bf360c;
+  --d4: #f3e5f5; --d4b: #6a1b9a; --d4t: #4a148c;
+  --d5: #fce4ec; --d5b: #c62828; --d5t: #880e4f;
+
+  --d1accent: #43a047;
+  --d2accent: #1e88e5;
+  --d3accent: #fb8c00;
+  --d4accent: #8e24aa;
+  --d5accent: #e53935;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--dark);
+  font-family: 'Outfit', sans-serif;
+  line-height: 1.6;
+}
+
+/* TOP HERO */
+.hero {
+  background: var(--dark);
+  padding: 64px 24px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 50%, rgba(67,160,71,0.15) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 80% 50%, rgba(30,136,229,0.12) 0%, transparent 70%);
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.6);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 7px 18px;
+  border-radius: 100px;
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.hero-eyebrow .dot {
+  width: 6px; height: 6px;
+  background: #43a047;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(40px, 8vw, 80px);
+  color: #fff;
+  line-height: 1.05;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.hero h1 em {
+  font-style: italic;
+  background: linear-gradient(90deg, #43a047, #1e88e5, #fb8c00, #8e24aa, #e53935);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  color: rgba(255,255,255,0.45);
+  font-size: 15px;
+  max-width: 500px;
+  margin: 0 auto 40px;
+  position: relative;
+}
+
+/* LEVEL PILLS */
+.level-track {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  position: relative;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.level-pill {
+  padding: 8px 20px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+.lp-0 { background: rgba(67,160,71,0.2); color: #81c784; border: 1px solid rgba(67,160,71,0.3); }
+.lp-1 { background: rgba(30,136,229,0.2); color: #64b5f6; border: 1px solid rgba(30,136,229,0.3); }
+.lp-2 { background: rgba(251,140,0,0.2); color: #ffb74d; border: 1px solid rgba(251,140,0,0.3); }
+.lp-3 { background: rgba(142,36,170,0.2); color: #ce93d8; border: 1px solid rgba(142,36,170,0.3); }
+.lp-4 { background: rgba(229,57,53,0.2); color: #ef9a9a; border: 1px solid rgba(229,57,53,0.3); }
+
+.arrow-sep {
+  color: rgba(255,255,255,0.2);
+  font-size: 16px;
+  margin: 0 -4px;
+}
+
+/* STATS STRIP */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+
+.stat {
+  flex: 1;
+  max-width: 200px;
+  padding: 24px 16px;
+  text-align: center;
+  border-right: 1px solid var(--border);
+}
+
+.stat:last-child { border-right: none; }
+
+.stat-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 36px;
+  line-height: 1;
+  color: var(--dark);
+}
+
+.stat-label {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 4px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* MAIN CONTENT */
+.main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 20px 80px;
+}
+
+/* PROGRESS */
+.progress-wrap {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.progress-wrap .p-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+.progress-wrap .p-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--border);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.progress-wrap .p-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #43a047, #1e88e5, #fb8c00, #8e24aa, #e53935);
+  border-radius: 100px;
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+.progress-wrap .p-pct {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--dark);
+  min-width: 36px;
+  text-align: right;
+}
+
+/* DAY CARDS */
+.day-section {
+  margin-bottom: 36px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  animation: slideUp 0.5s ease both;
+}
+
+.day-section:nth-child(2) { animation-delay: 0.05s; }
+.day-section:nth-child(3) { animation-delay: 0.10s; }
+.day-section:nth-child(4) { animation-delay: 0.15s; }
+.day-section:nth-child(5) { animation-delay: 0.20s; }
+.day-section:nth-child(6) { animation-delay: 0.25s; }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.day-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 28px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  user-select: none;
+}
+
+.day-header:hover { opacity: 0.85; }
+
+.day-num-badge {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.day-num-badge .dn {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.day-num-badge .dl {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.d1 .day-num-badge { background: var(--d1); }
+.d1 .day-num-badge .dn { color: var(--d1t); }
+.d2 .day-num-badge { background: var(--d2); }
+.d2 .day-num-badge .dn { color: var(--d2t); }
+.d3 .day-num-badge { background: var(--d3); }
+.d3 .day-num-badge .dn { color: var(--d3t); }
+.d4 .day-num-badge { background: var(--d4); }
+.d4 .day-num-badge .dn { color: var(--d4t); }
+.d5 .day-num-badge { background: var(--d5); }
+.d5 .day-num-badge .dn { color: var(--d5t); }
+
+.day-header-text { flex: 1; }
+
+.day-header-text .day-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: var(--dark);
+  line-height: 1.2;
+}
+
+.day-header-text .day-subtitle {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.day-level-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  padding: 5px 12px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.d1 .day-level-tag { background: var(--d1); color: var(--d1t); }
+.d2 .day-level-tag { background: var(--d2); color: var(--d2t); }
+.d3 .day-level-tag { background: var(--d3); color: var(--d3t); }
+.d4 .day-level-tag { background: var(--d4); color: var(--d4t); }
+.d5 .day-level-tag { background: var(--d5); color: var(--d5t); }
+
+.day-toggle {
+  font-size: 20px;
+  color: var(--muted);
+  transition: transform 0.3s;
+}
+
+.day-section.open .day-toggle { transform: rotate(180deg); }
+
+/* DAY BODY */
+.day-body {
+  display: none;
+  background: var(--surface);
+  padding: 0 28px 28px;
+}
+
+.day-section.open .day-body { display: block; }
+
+/* TOPICS LIST */
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.topic-card {
+  border-radius: 12px;
+  padding: 16px 18px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.d1 .topic-card { background: var(--d1); border-color: #c8e6c9; }
+.d2 .topic-card { background: var(--d2); border-color: #bbdefb; }
+.d3 .topic-card { background: var(--d3); border-color: #ffe0b2; }
+.d4 .topic-card { background: var(--d4); border-color: #e1bee7; }
+.d5 .topic-card { background: var(--d5); border-color: #ffcdd2; }
+
+.topic-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+
+.topic-card.done { opacity: 0.45; }
+
+.topic-card.done::after {
+  content: '✓';
+  position: absolute;
+  top: 12px; right: 14px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.d1 .topic-card.done::after { color: var(--d1b); }
+.d2 .topic-card.done::after { color: var(--d2b); }
+.d3 .topic-card.done::after { color: var(--d3b); }
+.d4 .topic-card.done::after { color: var(--d4b); }
+.d5 .topic-card.done::after { color: var(--d5b); }
+
+.topic-icon {
+  font-size: 22px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.topic-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+
+.topic-desc {
+  font-size: 12px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.topic-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  margin-top: 8px;
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 100px;
+}
+
+.d1 .topic-time { background: rgba(46,125,50,0.12); color: var(--d1b); }
+.d2 .topic-time { background: rgba(21,101,192,0.12); color: var(--d2b); }
+.d3 .topic-time { background: rgba(230,81,0,0.12); color: var(--d3b); }
+.d4 .topic-time { background: rgba(106,27,154,0.12); color: var(--d4b); }
+.d5 .topic-time { background: rgba(198,40,40,0.12); color: var(--d5b); }
+
+/* PROJECT BOX */
+.project-box {
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin-top: 8px;
+  border: 2px dashed;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.d1 .project-box { border-color: #a5d6a7; background: rgba(67,160,71,0.04); }
+.d2 .project-box { border-color: #90caf9; background: rgba(30,136,229,0.04); }
+.d3 .project-box { border-color: #ffcc80; background: rgba(251,140,0,0.04); }
+.d4 .project-box { border-color: #ce93d8; background: rgba(142,36,170,0.04); }
+.d5 .project-box { border-color: #ef9a9a; background: rgba(229,57,53,0.04); }
+
+.project-emoji { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+
+.project-content .p-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.project-content .p-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+
+.project-content .p-desc {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* TIPS ROW */
+.tips-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.tip-chip {
+  background: #f5f5f0;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: var(--dark);
+}
+
+/* DAY HEADER BG */
+.d1 .day-header { background: linear-gradient(135deg, #f1f8e9, #e8f5e9); }
+.d2 .day-header { background: linear-gradient(135deg, #e8f4fd, #e3f2fd); }
+.d3 .day-header { background: linear-gradient(135deg, #fff8e1, #fff3e0); }
+.d4 .day-header { background: linear-gradient(135deg, #faf0ff, #f3e5f5); }
+.d5 .day-header { background: linear-gradient(135deg, #fff0f3, #fce4ec); }
+
+/* RESOURCES SECTION */
+.resources-section {
+  background: var(--dark);
+  border-radius: 20px;
+  padding: 32px;
+  margin-top: 16px;
+  color: #fff;
+}
+
+.resources-section h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+
+.resources-section .rs-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 24px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.res-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.res-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 16px;
+  transition: background 0.2s;
+}
+
+.res-card:hover { background: rgba(255,255,255,0.09); }
+
+.res-card .rc-emoji { font-size: 20px; margin-bottom: 8px; }
+.res-card .rc-name { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 3px; }
+.res-card .rc-url { font-size: 10px; color: rgba(255,255,255,0.35); font-family: 'JetBrains Mono', monospace; margin-bottom: 4px; }
+.res-card .rc-desc { font-size: 11px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+
+/* FOOTER NOTE */
+.footer-note {
+  text-align: center;
+  margin-top: 48px;
+  padding: 32px;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+}
+
+.footer-note h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.footer-note p {
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .stats { flex-wrap: wrap; }
+  .stat { min-width: 50%; border-right: none; border-bottom: 1px solid var(--border); }
+  .topics-grid { grid-template-columns: 1fr; }
+  .day-header { padding: 16px; gap: 12px; }
+  .day-toggle { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">
+    <span class="dot"></span>
+    Android Development Masterplan
+  </div>
+  <h1>5 Din Mein<br><em>Android Dev</em></h1>
+  <p class="hero-sub">Bilkul scratch se shuru karke 5 din mein beginner se advanced level tak pahuncho</p>
+  <div class="level-track">
+    <span class="level-pill lp-0">🌱 Beginner</span>
+    <span class="arrow-sep">→</span>
+    <span class="level-pill lp-1">📱 Basic App</span>
+    <span class="arrow-sep">→</span>
+    <span class="level-pill lp-2">⚙️ Intermediate</span>
+    <span class="arrow-sep">→</span>
+    <span class="level-pill lp-3">🔥 Advanced</span>
+    <span class="arrow-sep">→</span>
+    <span class="level-pill lp-4">🚀 Job Ready</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">5</div>
+    <div class="stat-label">Din / Days</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">35+</div>
+    <div class="stat-label">Topics</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">5</div>
+    <div class="stat-label">Projects</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">∞</div>
+    <div class="stat-label">Potential</div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap">
+    <span class="p-label">PROGRESS</span>
+    <div class="p-bar"><div class="p-fill" id="pfill"></div></div>
+    <span class="p-pct" id="ppct">0%</span>
+  </div>
+
+  <!-- ===== DAY 1 ===== -->
+  <div class="day-section d1 open">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num-badge">
+        <span class="dn">1</span>
+        <span class="dl">Din</span>
+      </div>
+      <div class="day-header-text">
+        <div class="day-title">Foundation — Setup & Kotlin Basics</div>
+        <div class="day-subtitle">Pehle din ka kaam: tools install karo aur pehli app banao</div>
+      </div>
+      <span class="day-level-tag">🌱 Beginner</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="topics-grid">
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">⚙️</span>
+          <div class="topic-name">Android Studio Install & Setup</div>
+          <div class="topic-desc">developer.android.com se download karo. JDK, SDK, Emulator sab configure karo. Pehla project create karo.</div>
+          <span class="topic-time">⏱ 1.5 hrs</span>
+        </div>
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">📝</span>
+          <div class="topic-name">Kotlin Language Basics</div>
+          <div class="topic-desc">Variables (val/var), Data types, String templates, If-else, When expression. Kotlin Playground pe practice karo.</div>
+          <span class="topic-time">⏱ 2 hrs</span>
+        </div>
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">🔄</span>
+          <div class="topic-name">Functions & Loops</div>
+          <div class="topic-desc">fun keyword, parameters, return types. for loop, while, forEach. Lambda functions basics.</div>
+          <span class="topic-time">⏱ 1.5 hrs</span>
+        </div>
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">🧩</span>
+          <div class="topic-name">Classes & Objects (OOP)</div>
+          <div class="topic-desc">Class, Constructor, Properties, Methods. Inheritance, data class, object keyword. Android ke liye OOP zaroori hai.</div>
+          <span class="topic-time">⏱ 1.5 hrs</span>
+        </div>
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">📱</span>
+          <div class="topic-name">Pehli Android Activity</div>
+          <div class="topic-desc">MainActivity samjho. onCreate(), setContentView(). XML layout — TextView, Button, EditText add karo.</div>
+          <span class="topic-time">⏱ 1.5 hrs</span>
+        </div>
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">🎮</span>
+          <div class="topic-name">onClick & User Interaction</div>
+          <div class="topic-desc">Button click handle karo. EditText se input lo. Toast messages dikhao. Simple counter app banao.</div>
+          <span class="topic-time">⏱ 1 hr</span>
+        </div>
+      </div>
+      <div class="project-box">
+        <div class="project-emoji">🏗️</div>
+        <div class="project-content">
+          <div class="p-label">Din 1 ka Project</div>
+          <div class="p-title">Simple Calculator App</div>
+          <div class="p-desc">2 numbers input lo, +/-/×/÷ buttons, result dikhao. Yeh tumhari pehli real Android app hogi!</div>
+        </div>
+      </div>
+      <div class="tips-row">
+        <span class="tip-chip">💡 Kotlin > Java for beginners</span>
+        <span class="tip-chip">🔥 Emulator slow ho toh real phone connect karo</span>
+        <span class="tip-chip">📖 kotlinlang.org/docs zaroor bookmark karo</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== DAY 2 ===== -->
+  <div class="day-section d2">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num-badge">
+        <span class="dn">2</span>
+        <span class="dl">Din</span>
+      </div>
+      <div class="day-header-text">
+        <div class="day-title">UI/UX — Layouts, Navigation & Multiple Screens</div>
+        <div class="day-subtitle">Real apps banate hain — multiple screens, lists, navigation</div>
+      </div>
+      <span class="day-level-tag">📱 Basic App</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="topics-grid">
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">📐</span>
+          <div class="topic-name">XML Layouts Deep Dive</div>
+          <div class="topic-desc">ConstraintLayout (sabse important!), LinearLayout, FrameLayout. dp/sp units, match_parent vs wrap_content.</div>
+          <span class="topic-time">⏱ 1.5 hrs</span>
+        </div>
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">📋</span>
+          <div class="topic-name">RecyclerView — Lists Banana</div>
+          <div class="topic-desc">Android ka sabse important view! Adapter, ViewHolder pattern. List of items dikhao. Click listeners add karo.</div>
+          <span class="topic-time">⏱ 2 hrs</span>
+        </div>
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">🗺️</span>
+          <div class="topic-name">Intents — Screen Change Karna</div>
+          <div class="topic-desc">Explicit Intent se dusri Activity kholo. Data pass karo putExtra/getExtra se. Back button handle karo.</div>
+          <span class="topic-time">⏱ 1.5 hrs</span>
+        </div>
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">🧭</span>
+          <div class="topic-name">Bottom Navigation + Fragments</div>
+          <div class="topic-desc">BottomNavigationView add karo. Fragment create karo. Navigation Component se routing karo.</div>
+          <span class="topic-time">⏱ 2 hrs</span>
+        </div>
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">🎨</span>
+          <div class="topic-name">Material Design Components</div>
+          <div class="topic-desc">MaterialButton, CardView, AppBar, FAB. Themes aur Styles apply karo. Light/Dark mode setup karo.</div>
+          <span class="topic-time">⏱ 1.5 hrs</span>
+        </div>
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">🖼️</span>
+          <div class="topic-name">Images — Glide Library</div>
+          <div class="topic-desc">Glide se URL se image load karo. Placeholder, error images set karo. Circular images, rounded corners.</div>
+          <span class="topic-time">⏱ 1 hr</span>
+        </div>
+      </div>
+      <div class="project-box">
+        <div class="project-emoji">📰</div>
+        <div class="project-content">
+          <div class="p-label">Din 2 ka Project</div>
+          <div class="p-title">News / Todo List App</div>
+          <div class="p-desc">3 tabs (Home, Explore, Profile), RecyclerView mein items, detail screen pe click se jao, images load karo.</div>
+        </div>
+      </div>
+      <div class="tips-row">
+        <span class="tip-chip">💡 ConstraintLayout sikhna MUST hai</span>
+        <span class="tip-chip">🎯 RecyclerView practice karo baar baar</span>
+        <span class="tip-chip">🎨 material.io dekho design ke liye</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== DAY 3 ===== -->
+  <div class="day-section d3">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num-badge">
+        <span class="dn">3</span>
+        <span class="dl">Din</span>
+      </div>
+      <div class="day-header-text">
+        <div class="day-title">Architecture — MVVM, Data & APIs</div>
+        <div class="day-subtitle">Professional apps jaise banao — data fetch karo, architecture seekho</div>
+      </div>
+      <span class="day-level-tag">⚙️ Intermediate</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="topics-grid">
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">🏛️</span>
+          <div class="topic-name">MVVM Architecture</div>
+          <div class="topic-desc">Model-View-ViewModel pattern. Kyun zaroori hai? ViewModel kaise banate hain. Separation of concerns.</div>
+          <span class="topic-time">⏱ 1.5 hrs</span>
+        </div>
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">📡</span>
+          <div class="topic-name">LiveData & StateFlow</div>
+          <div class="topic-desc">LiveData observe karo. StateFlow vs LiveData. UI automatically update karo jab data change ho.</div>
+          <span class="topic-time">⏱ 1.5 hrs</span>
+        </div>
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">🌐</span>
+          <div class="topic-name">Retrofit — API Calls</div>
+          <div class="topic-desc">REST API se data fetch karo. Retrofit + OkHttp setup. GET/POST requests. JSON parse karo Gson se.</div>
+          <span class="topic-time">⏱ 2 hrs</span>
+        </div>
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">⚡</span>
+          <div class="topic-name">Coroutines — Async Programming</div>
+          <div class="topic-desc">Main thread block mat karo! launch, async, await. viewModelScope. suspend functions. Network calls background pe.</div>
+          <span class="topic-time">⏱ 2 hrs</span>
+        </div>
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">🗄️</span>
+          <div class="topic-name">Room Database — Local Storage</div>
+          <div class="topic-desc">Entity, DAO, Database. CRUD operations. Offline-first app banana. Flow se live updates.</div>
+          <span class="topic-time">⏱ 2 hrs</span>
+        </div>
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">💉</span>
+          <div class="topic-name">Dependency Injection — Hilt</div>
+          <div class="topic-desc">Hilt kya hai aur kyun use karte hain. @HiltAndroidApp, @Inject, @Module. Repository pattern implement karo.</div>
+          <span class="topic-time">⏱ 1.5 hrs</span>
+        </div>
+      </div>
+      <div class="project-box">
+        <div class="project-emoji">🌤️</div>
+        <div class="project-content">
+          <div class="p-label">Din 3 ka Project</div>
+          <div class="p-title">Weather App (Full MVVM)</div>
+          <div class="p-desc">OpenWeatherMap API se live data fetch karo, MVVM architecture, Room mein save karo, offline bhi kaam kare.</div>
+        </div>
+      </div>
+      <div class="tips-row">
+        <span class="tip-chip">💡 Coroutines samjhe bina aage mat badho</span>
+        <span class="tip-chip">🔥 MVVM industry standard hai</span>
+        <span class="tip-chip">🧪 Postman se API test karo pehle</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== DAY 4 ===== -->
+  <div class="day-section d4">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num-badge">
+        <span class="dn">4</span>
+        <span class="dl">Din</span>
+      </div>
+      <div class="day-header-text">
+        <div class="day-title">Advanced — Jetpack Compose, Firebase & Testing</div>
+        <div class="day-subtitle">2024 ka modern Android development — Compose seekho</div>
+      </div>
+      <span class="day-level-tag">🔥 Advanced</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="topics-grid">
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">✨</span>
+          <div class="topic-name">Jetpack Compose Basics</div>
+          <div class="topic-desc">XML ko bhool jao! @Composable functions, Text, Button, Column, Row, Box. State aur recomposition.</div>
+          <span class="topic-time">⏱ 2 hrs</span>
+        </div>
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">🔀</span>
+          <div class="topic-name">Compose State Management</div>
+          <div class="topic-desc">remember, mutableStateOf, hoisting. LazyColumn (RecyclerView ka replacement). Animations in Compose.</div>
+          <span class="topic-time">⏱ 1.5 hrs</span>
+        </div>
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">🔥</span>
+          <div class="topic-name">Firebase Integration</div>
+          <div class="topic-desc">Firebase Auth (Google Sign-In, Email/Password). Firestore realtime database. Firebase Storage for images.</div>
+          <span class="topic-time">⏱ 2 hrs</span>
+        </div>
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">🔔</span>
+          <div class="topic-name">Push Notifications (FCM)</div>
+          <div class="topic-desc">Firebase Cloud Messaging setup. Foreground + background notifications. Custom notification UI.</div>
+          <span class="topic-time">⏱ 1 hr</span>
+        </div>
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">🧪</span>
+          <div class="topic-name">Unit Testing Basics</div>
+          <div class="topic-desc">JUnit, Mockito use karo. ViewModel test karo. Repository mock karo. Test-driven basics samjho.</div>
+          <span class="topic-time">⏱ 1.5 hrs</span>
+        </div>
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">🛡️</span>
+          <div class="topic-name">Permissions & Security</div>
+          <div class="topic-desc">Runtime permissions (Camera, Location, Storage). AndroidManifest permissions. Secure API keys store karo.</div>
+          <span class="topic-time">⏱ 1 hr</span>
+        </div>
+      </div>
+      <div class="project-box">
+        <div class="project-emoji">💬</div>
+        <div class="project-content">
+          <div class="p-label">Din 4 ka Project</div>
+          <div class="p-title">Chat App (Compose + Firebase)</div>
+          <div class="p-desc">Google Sign-In, Compose UI, Firestore mein messages, real-time updates, push notifications — ek poori production-ready app!</div>
+        </div>
+      </div>
+      <div class="tips-row">
+        <span class="tip-chip">🚀 Compose future hai Android ka</span>
+        <span class="tip-chip">🔥 Firebase free tier kaafi hai start ke liye</span>
+        <span class="tip-chip">📚 developer.android.com/jetpack/compose</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== DAY 5 ===== -->
+  <div class="day-section d5">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num-badge">
+        <span class="dn">5</span>
+        <span class="dl">Din</span>
+      </div>
+      <div class="day-header-text">
+        <div class="day-title">Polish, Deploy & Job-Ready Portfolio</div>
+        <div class="day-subtitle">App Play Store pe publish karo aur portfolio ready karo</div>
+      </div>
+      <span class="day-level-tag">🚀 Job Ready</span>
+      <span class="day-toggle">▼</span>
+    </div>
+    <div class="day-body">
+      <div class="topics-grid">
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">⚡</span>
+          <div class="topic-name">App Performance Optimize Karo</div>
+          <div class="topic-desc">Baseline Profiles, Lazy loading, Image compression. Memory leaks dhundo. Android Profiler use karo.</div>
+          <span class="topic-time">⏱ 1.5 hrs</span>
+        </div>
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">🌍</span>
+          <div class="topic-name">Localization & Accessibility</div>
+          <div class="topic-desc">Multiple language support. Hindi strings add karo. Content descriptions, accessibility labels. TalkBack test karo.</div>
+          <span class="topic-time">⏱ 1 hr</span>
+        </div>
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">🔒</span>
+          <div class="topic-name">ProGuard & Release Build</div>
+          <div class="topic-desc">Release APK/AAB banana. ProGuard rules set karo. Keystore file create karo. App sign karo.</div>
+          <span class="topic-time">⏱ 1.5 hrs</span>
+        </div>
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">🏪</span>
+          <div class="topic-name">Play Store Publish</div>
+          <div class="topic-desc">Google Play Console setup ($25 one-time). Store listing, screenshots, icon. Review process. Live karo apni app!</div>
+          <span class="topic-time">⏱ 1.5 hrs</span>
+        </div>
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">📂</span>
+          <div class="topic-name">GitHub Portfolio</div>
+          <div class="topic-desc">5 din ke sab projects GitHub pe push karo. README likho screenshots ke saath. Portfolio website banao.</div>
+          <span class="topic-time">⏱ 1.5 hrs</span>
+        </div>
+        <div class="topic-card" onclick="tick(this)">
+          <span class="topic-icon">💼</span>
+          <div class="topic-name">Interview Prep + Next Steps</div>
+          <div class="topic-desc">Common Android interview questions. DSA basics. Freelancing platforms (Upwork, Fiverr). Job platforms (LinkedIn, Naukri).</div>
+          <span class="topic-time">⏱ 2 hrs</span>
+        </div>
+      </div>
+      <div class="project-box">
+        <div class="project-emoji">🏆</div>
+        <div class="project-content">
+          <div class="p-label">Din 5 ka Final Project</div>
+          <div class="p-title">Portfolio App — Play Store pe Live!</div>
+          <div class="p-desc">5 din mein banaye sab apps ko ek showcase app mein dikhao. Play Store pe publish karo. GitHub profile complete karo. Ab aap ek Android Developer ho! 🎉</div>
+        </div>
+      </div>
+      <div class="tips-row">
+        <span class="tip-chip">🏆 Abhi aap intermediate+ level pe ho</span>
+        <span class="tip-chip">💼 GitHub active rakhna mat bhulo</span>
+        <span class="tip-chip">🔄 Daily 1 app banate raho practice ke liye</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESOURCES -->
+  <div class="resources-section">
+    <h2>🔗 Top Resources</h2>
+    <p class="rs-sub">// yeh sab free hain, bookmark karo abhi</p>
+    <div class="res-grid">
+      <div class="res-card">
+        <div class="rc-emoji">📖</div>
+        <div class="rc-name">Android Developers</div>
+        <div class="rc-url">developer.android.com</div>
+        <div class="rc-desc">Official docs, codelabs, guides — sabse reliable source</div>
+      </div>
+      <div class="res-card">
+        <div class="rc-emoji">🎓</div>
+        <div class="rc-name">Android Basics (Google)</div>
+        <div class="rc-url">developer.android.com/courses</div>
+        <div class="rc-desc">Free structured course — beginner ke liye best</div>
+      </div>
+      <div class="res-card">
+        <div class="rc-emoji">▶️</div>
+        <div class="rc-name">Philipp Lackner (YouTube)</div>
+        <div class="rc-url">youtube.com/@PhilippLackner</div>
+        <div class="rc-desc">Best Android YouTube channel — sab kuch cover karta hai</div>
+      </div>
+      <div class="res-card">
+        <div class="rc-emoji">🎯</div>
+        <div class="rc-name">Kotlin Koans</div>
+        <div class="rc-url">play.kotlinlang.org/koans</div>
+        <div class="rc-desc">Interactive Kotlin exercises — language master karo</div>
+      </div>
+      <div class="res-card">
+        <div class="rc-emoji">🔥</div>
+        <div class="rc-name">Firebase Docs</div>
+        <div class="rc-url">firebase.google.com/docs</div>
+        <div class="rc-desc">Auth, Firestore, Storage — sab free mein</div>
+      </div>
+      <div class="res-card">
+        <div class="rc-emoji">💬</div>
+        <div class="rc-name">Stack Overflow</div>
+        <div class="rc-url">stackoverflow.com</div>
+        <div class="rc-desc">Koi bhi error aaye — yahan zaroor milega answer</div>
+      </div>
+      <div class="res-card">
+        <div class="rc-emoji">🐙</div>
+        <div class="rc-name">GitHub</div>
+        <div class="rc-url">github.com</div>
+        <div class="rc-desc">Apna code rakho aur dusron ke projects dekho</div>
+      </div>
+      <div class="res-card">
+        <div class="rc-emoji">✨</div>
+        <div class="rc-name">Compose Docs</div>
+        <div class="rc-url">developer.android.com/compose</div>
+        <div class="rc-desc">Modern UI toolkit — future of Android development</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-note">
+    <h3>🎉 5 Din Baad Aap Kahan Honge?</h3>
+    <p>
+      Aapke paas <strong>5 working apps</strong> honge, ek <strong>GitHub portfolio</strong> hoga, aur ek app <strong>Play Store pe live</strong> hogi.
+      Yeh intermediate-to-advanced level hai — fresher Android developer jobs ke liye enough hai.
+      <br><br>
+      <strong>Bas ek rule yaad rakho:</strong> Roz kuch banao. Theory se zyada practice karo. 🚀
+    </p>
+  </div>
+
+</div>
+
+<script>
+  function toggleDay(header) {
+    const section = header.parentElement;
+    section.classList.toggle('open');
+    updateProgress();
+  }
+
+  function tick(card) {
+    card.classList.toggle('done');
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const all = document.querySelectorAll('.topic-card');
+    const done = document.querySelectorAll('.topic-card.done');
+    const pct = Math.round((done.length / all.length) * 100);
+    document.getElementById('ppct').textContent = pct + '%';
+    document.getElementById('pfill').style.width = pct + '%';
+  }
+</script>
+</body>
+</html>
